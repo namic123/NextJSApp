@@ -1,5 +1,5 @@
 import Link from "next/link";
-import next from "next";
+import {Control} from "@/app/control";
 
 export const metadata = {
   title: 'Web tutorials',
@@ -9,6 +9,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
     const resp = await fetch('http://localhost:9999/topics',{cache : 'no-store'});
     const topics = await resp.json();
+
 
   return (
     <html>
@@ -32,18 +33,7 @@ export default async function RootLayout({ children }) {
         })}
       </ol>
       {children}
-      <ul>
-        <li>
-          {/* create라는 폴더 안에 있는 page.js 파일에 라우팅됨. */}
-          <Link href="/create">Create</Link>
-        </li>
-        <li>
-          <Link href="/update/1">Update</Link>
-        </li>
-        <li>
-          <input type="button" value="delete"/>
-        </li>
-      </ul>
+        <Control/>
       </body>
     </html>
   )
