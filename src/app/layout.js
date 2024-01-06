@@ -1,4 +1,5 @@
 import './globals.css'
+import Link from "next/link";
 
 
 export const metadata = {
@@ -13,24 +14,30 @@ export default function RootLayout({ children }) {
     {/* 공통된 내용은 layout 파일에서 작성한다.*/}
       <body>
       <h1>
-        <a href="/">WEB</a>
+        {/* Link 사용 이유 */}
+        {/* 1. 빠른 페이지 로딩: 새 페이지를 전체 불러오는 대신 필요한 부분만 업데이트 */}
+        {/* 2. 상태 유지:  애플리케이션의 상태(예:로그인)가 페이지 이동시에도 유지 */}
+        {/* 3. 서버 부하 감소: 서버에 새 페이지를 요청하는 대신, 클라이언트 측에서 처리하므로 서버 부하가 감소 */}
+        {/* 4. 사용자 경험 개선: 사용자는 페이지가 빠르게 로드되고, 데이터와 상태가 유지되므로 더 나은 사용자 경험을 체감 */}
+        {/* 5. Prefetching: Next js의 Link 컴포넌트는 사용자가 링크에 마우스를 올리는 순간 미리 데이터를 가져오는 prefetching 기능을 제공. 로딩시간 감소 */}
+        <Link href="/">WEB</Link>
       </h1>
       <ol>
         <li>
-          <a href="/read/1">html</a>
+          <Link href="/read/1">html</Link>
         </li>
         <li>
-          <a href="/read/2">css</a>
+          <Link href="/read/2">css</Link>
         </li>
       </ol>
       {children}
       <ul>
         <li>
           {/* create라는 폴더 안에 있는 page.js 파일에 라우팅됨. */}
-          <a href="/create">Create</a>
+          <Link href="/create">Create</Link>
         </li>
         <li>
-          <a href="/update/1">Update</a>
+          <Link href="/update/1">Update</Link>
         </li>
         <li>
           <input type="button" value="delete"/>
