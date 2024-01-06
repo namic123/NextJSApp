@@ -21,7 +21,8 @@ export default function Create(){
           .then(res=> res.json())
           .then(result =>{
             console.log(result);
-            const lastid = result.id;
+            const lastid = result.id
+            router.refresh();
             /* 생성된 마지팍 페이지로 리디렉션 */
             router.push(`/read/${lastid}`); //
           })
