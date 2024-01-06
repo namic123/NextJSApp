@@ -13,6 +13,8 @@ export default async function RootLayout({ children }) {
     <html>
     {/* children이라는 property는 page.js라는 파일의 값을 가져옴 */}
     {/* 공통된 내용은 layout 파일에서 작성한다.*/}
+    {/* 만약 create 폴더 안에 layout.js가 없을 경우 부모 폴더의 layout.js children에 라우팅됨. */}
+    {/* props.children에는 create 폴더의 page.js가 라우팅됨. */}
       <body>
       <h1>
         {/* Link 사용 이유 */}
