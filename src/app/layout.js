@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
       {children}
       <ul>
         <li>
+          {/* create라는 폴더 안에 있는 page.js 파일에 라우팅됨. */}
           <a href="/create">Create</a>
         </li>
         <li>
