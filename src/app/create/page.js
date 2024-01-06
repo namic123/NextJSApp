@@ -1,5 +1,9 @@
 "use client";
+import {useRouter} from "next/navigation";
+
 export default function Create(){
+  /* useRouter는 경로 리디렉션에 사용 */
+  const router = useRouter();
   return (
     <>
       <form onSubmit={(e)=>{
@@ -18,6 +22,8 @@ export default function Create(){
           .then(result =>{
             console.log(result);
             const lastid = result.id;
+            /* 생성된 마지팍 페이지로 리디렉션 */
+            router.push(`/read/${lastid}`); //
           })
       }}>
         <p>
