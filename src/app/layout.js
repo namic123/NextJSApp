@@ -1,5 +1,6 @@
 import Link from "next/link";
-import {Control} from "@/app/control";
+import {Control} from "./Control";
+
 
 export const metadata = {
   title: 'Web tutorials',
@@ -7,10 +8,8 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-    const resp = await fetch('http://localhost:9999/topics',{cache : 'no-store'});
+    const resp = await fetch('http://localhost:9999/topics',{ cache : 'no-store'});
     const topics = await resp.json();
-
-
   return (
     <html>
     {/* children이라는 property는 page.js라는 파일의 값을 가져옴 */}
@@ -33,7 +32,7 @@ export default async function RootLayout({ children }) {
         })}
       </ol>
       {children}
-        <Control/>
+      <Control/>
       </body>
     </html>
   )

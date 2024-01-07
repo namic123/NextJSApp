@@ -13,7 +13,7 @@ export function Control() {
           {/* create라는 폴더 안에 있는 page.js 파일에 라우팅됨. */}
           <Link href="/create">Create</Link>
         </li>
-        {id? <>
+        {id ? <>
           <li>
             <Link href={"/update/"+id}>Update</Link>
           </li>
