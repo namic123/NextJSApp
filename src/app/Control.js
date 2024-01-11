@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import {useParams} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 
 export function Control() {
   const params = useParams();
+  const router = useRouter();
   const id = params.id;
 
   return (
@@ -18,7 +19,14 @@ export function Control() {
             <Link href={"/update/"+id}>Update</Link>
           </li>
           <li>
-            <input type="button" value="delete"/>
+            <button onClick={async ()=>{
+              const resp = await fetch(`http://localhost:9999/topics/${id}`, {
+                method: 'DELETE',
+              });
+              await resp.json();
+              router.push('/');
+              router.refresh();
+            }}>delete</button>
           </li>
         </>):(<></>)}
       </ul>
